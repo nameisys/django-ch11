@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Logout{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
+
+{% block content %}
+    ~LOGOUT COMPLETED SUCCESSFULLY~
+    <a href="{% url 'login' %}" class="btn logout">Login</a>
+{% endblock %}

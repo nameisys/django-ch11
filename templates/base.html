@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>{% block title %}Django Web Programming{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}"/>
+</head>
+
+<body>
+<header>
+    <h1><a href="{% url 'home' %}">Study with Django &lt;/&gt;</a></h1>
+    <nav class="clear">
+        <div class="user">
+            {% if user.is_active %}
+                <a href="#">{% firstof user.get_short_name user.get_username %}</a> /
+                <a href="{% url 'password_change' %}">Change Password</a> /
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="#">Anonymous</a> /
+                <a href="{% url 'register' %}">Register</a> /
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+        <div class="menu">
+            <ul class="clear">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'bookmark:index' %}">Bookmark</a></li>
+                <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                <li><a href="{% url 'blog:post_archive' %}">Archive</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="wrapper">
+    <div class="container">
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {% block footer %}{% endblock %}
+</div>
+</body>
+
+</html>

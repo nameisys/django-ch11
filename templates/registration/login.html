@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
+
+{% block content %}
+    <form action="." method="post" class="account">
+        {% csrf_token %}
+        {% if forms.error %}
+            <p class="errornote">Wrong! Please correct error(s) below.</p>
+        {% endif %}
+
+        <div class="row">
+            {{ form.username.label_tag }} {{ form.username }}
+        </div>
+        <div class="row">
+            {{ form.password.label_tag }} {{ form.password }}
+        </div>
+        <div class="row">
+            <input type="submit" value="LOGIN">
+            <input type="hidden" name="next" value="{{ next }}">
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        document.getElementById('id_username').focus();
+    </script>
+{% endblock %}
