@@ -16,8 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from mysite.view import HomeView
-from mysite.view import UserCreateView, UserCreateDoneTV
+from mysite.views import HomeView
+from mysite.views import UserCreateView, UserCreateDoneTV
 
 
 urlpatterns = [

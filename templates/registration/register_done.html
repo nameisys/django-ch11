@@ -1,7 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Password Change Done{% endblock %}
+{% block title %}Register Done{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
 
 {% block content %}
-    ~PASSWORD WAS CHANGED SUCCESSFULLY~
-    <a href="{% url login %}" class="btn">Login</a>
+    ~REGISTERATION COMPLETED SUCCESSFULLY~
+    <a href="{% url 'login' %}" class="btn">Login</a>
 {% endblock %}
